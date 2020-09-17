@@ -69,25 +69,25 @@
 								<ul class="dropdown-menu user-menu menu-icon">
 									<li class="menu-heading"><i class="fa fa-fw fa-sliders"></i> MODE SETTINGS</li>
 
-									<li class="interactive-view"><a><i class="fa fa-fw fa-bell"></i> <span class="text-primary">INTERACTIVE MODE</span> is active</a></li>
-									<li class="interactive-view"><a><i class="fa fa-fw fa-lock"></i> <span>Make Studying fun by providing alert when answer a question right or wrong</span></a></li>
+									<li class="interactive-view"><a><i class="fa fa-fw fa-bell"></i> <span class="text-primary">ADMIN MODE</span> is active</a></li>
+									<li class="interactive-view"><a><i class="fa fa-fw fa-lock"></i> <span>Control Everything with Admin Access</span></a></li>
 									<li class="interactive-view"><a><i class="fa fa-fw fa-sliders"></i> <span class="text-warning">Switch To:</span></a></li>
 									<li class="menu-button interactive-view">
-										<button onclick="changeMode('focus')" class="btn btn-success" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Make Studying more effective by allowing you to focus until you view Assessment." data-original-title="" title=""><i class="fa fa-edit"></i> FOCUS MODE</button>
+										<button onclick="changeMode('focus')" class="btn btn-success" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Make Studying more effective by allowing you to focus until you view Assessment." data-original-title="" title=""><i class="fa fa-edit"></i> SALES REP MODE</button>
 									</li>
 
-									<li class="focus-view"><a><i class="fa fa-fw fa-edit"></i> <span class="text-success">FOCUS MODE</span> is active</a></li>
-									<li class="focus-view"><a><i class="fa fa-fw fa-lock"></i> <span>Make Studying more effective by allowing you to focus until you view Assessment</span></a></li>
+									<li class="focus-view"><a><i class="fa fa-fw fa-edit"></i> <span class="text-success">SALES REP MODE</span> is active</a></li>
+									<li class="focus-view"><a><i class="fa fa-fw fa-lock"></i> <span>Add Invoices and do stuffs</span></a></li>
 									<li class="focus-view"><a><i class="fa fa-fw fa-sliders"></i> <span class="text-warning">Switch To:</span></a></li>
 
 									<li class="menu-button focus-view">
-										<button onclick="changeMode('interactive')" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Make Studying fun by providing alert when answer a question right or wrong." data-original-title="" title=""><i class="fa fa-bell"></i> INTERACTIVE MODE</button>
+										<button onclick="changeMode('interactive')" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Make Studying fun by providing alert when answer a question right or wrong." data-original-title="" title=""><i class="fa fa-bell"></i> ADMIn MODE</button>
 									</li>
 
 									<li class="menu-heading">ACCOUNT SETTINGS</li>
 									<li><a href="#"><i class="fa fa-fw fa-user"></i> <span class="student-name">Student</span></a></li>
 									<li class="menu-button">
-										<button onclick="resetAccount()" class="btn btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="ALERT!!! By reseting your account, all Assessment Record will be reset as well. " data-original-title="" title=""><i class="fa fa-refresh"></i> RESET ACCOUNT</button>
+										<button onclick="resetAccount()" class="btn btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="ALERT!!! By reseting your account, all Assessment Record will be reset as well. " data-original-title="" title=""><i class="fa fa-refresh"></i> Logout</button>
 									</li>
 								</ul>
 							</li>
@@ -108,7 +108,7 @@
 			<div class="sidebar-scroll">
 				<div class="user-account">
 					<div class="dropdown">
-						<a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong><span class="student-name">Student</span></strong> <i class="fa fa-caret-down"></i></a>
+						<a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong><span class="student-name">Caeser</span></strong> <i class="fa fa-caret-down"></i></a>
 						<ul class="dropdown-menu dropdown-menu-right account">
 							<li><a onclick="resetRecords()">Clear Records</a></li>
 							<li class="divider"></li>
@@ -119,10 +119,10 @@
 				<nav id="left-sidebar-nav" class="sidebar-nav">
 					<ul id="main-menu" class="metismenu">
 						<li class=""><a href="./"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
-						<li class=""><a data-toggle="modal" data-target="#CreateInvoice-modal"><i class="fa fa-edit"></i> <span>Create Invoice</span></a></li>
+						<li class="salesRep-only"><a data-toggle="modal" data-target="#CreateInvoice-modal"><i class="fa fa-edit"></i> <span>Create Invoice</span></a></li>
 						<li class=""><a data-toggle="modal" data-target="#AddClient-modal"><i class="lnr lnr-users"></i> <span>Add Client</span></a></li>
-						<li class=""><a data-toggle="modal" data-target="#AddItem-modal"><i class="fa fa-plus-square"></i> <span>Add Item</span></a></li>
-						<li class=""><a data-toggle="modal" data-target="#AddSalesRep-modal"><i class="fa fa-user-plus"></i> <span>Add Sales Rep</span></a></li>
+						<li class="admin-only"><a data-toggle="modal" data-target="#AddItem-modal"><i class="fa fa-plus-square"></i> <span>Add Item</span></a></li>
+						<li class="admin-only"><a data-toggle="modal" data-target="#AddSalesRep-modal"><i class="fa fa-user-plus"></i> <span>Add Sales Rep</span></a></li>
             <li class=""><a data-toggle="modal" data-target="#About-modal"><i class="lnr lnr-question-circle"></i> <span>About</span></a></li>
 					</ul>
 				</nav>
@@ -148,15 +148,15 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h4 class="modal-title" id="myModalLabel">About EaseStudy</h4>
+							<h4 class="modal-title" id="myModalLabel">About Invoice Generator</h4>
 						</div>
 						<div class="modal-body">
 							<img src="static/assets/img/about.gif" alt="about" class="img img-responsive img-fluid"/>
 							<div class="navbar-brand">
-								<a href="./" class="text-larger">EaseStudy
+								<a href="./" class="text-larger">Invoice Generator
 			          </a>
 							</div>
-							<p>is an offline-first Progressive Web Application take on as a project by Benjamin Owusu and Edmund Oakley Inkumsah. The two sought to provide an app which makes prepping for WASSCE as easy as it can be. You'll find out that it's quite unique from other websites and apps out there.</p>
+							<p>is an offline-first Progressive Web Application take on as a project by Caeser to be used by Integrated Investments Limited (Integas) Located at the no. 10 Abeka Rd, Tesano Accra Road, is a private owned company who deals in the sales, installation and repairs of industrial and domestic kitchen equipment. You'll find out that it's quite easy to generate invoice with this app.</p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
@@ -187,7 +187,7 @@
 						<div class="modal-footer">
 
 							<!-- <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button> -->
-							<button type="button" onclick="registerAccount()" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-check-circle"></i> Get Started</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-check-circle"></i> Get Started</button>
 						</div>
 					</div>
 				</div>
@@ -203,32 +203,49 @@
 						<div class="modal-body"><center>
 							<form class="" action="index.html" method="post">
 								<div class="form-group">
-									<label>Select Client</label>
-										<br>
-										<select id="multiselect4-filter" name="multiselect4[]" class="multiselect multiselect-custom">
-											<option value="bootstrap">Bootstrap</option>
-											<option value="bootstrap-marketplace">Bootstrap Marketplace</option>
-											<option value="bootstrap-theme">Bootstrap Theme</option>
-											<option value="html">HTML</option>
-											<option value="html-template">HTML Template</option>
-											<option value="wp-marketplace">WordPress Marketplace</option>
-											<option value="wp-plugin">WordPress Plugin</option>
-											<option value="wp-theme">WordPress Theme</option>
+									<label>Select Client </label>
+										<select id="multiselect4-filter" name="multiselect4[]" class="multiselect multiselect-custom form-control">
+											<option value="Steven [From: Jumia GH]">Steven [From: Jumia GH]</option>
+											<option value="Adjoa [From: TugFoods]">Adjoa [From: TugFoods]</option>
 										</select>
 										<br>
 								</div>
+
 								<div class="form-group">
-									<label>Select Items</label>
-										<br>
-										<select id="multiselect5-filter" name="multiselect4[]" class="multiselect multiselect-custom" multiple="multiple">
-											<option value="bootstrap">Bootstrap</option>
-											<option value="bootstrap-marketplace">Bootstrap Marketplace</option>
-											<option value="bootstrap-theme">Bootstrap Theme</option>
-											<option value="html">HTML</option>
-											<option value="html-template">HTML Template</option>
-											<option value="wp-marketplace">WordPress Marketplace</option>
-											<option value="wp-plugin">WordPress Plugin</option>
-											<option value="wp-theme">WordPress Theme</option>
+									<div class="input-group">
+										<span class="input-group-addon">
+											<b>Invoice No.# </b>
+												<!-- <label>Invoice No.# </label> -->
+										</span>
+										<input type="number" name="" value="1389" class="form-control">
+									</div>
+									<br>
+									<div class="input-group">
+										<span class="input-group-addon">
+											<b>Invoice Date </b>
+											<label>Invoice Date </label>
+										</span>
+										<input type="date" name="" class="form-control">
+									</div>
+									<br>
+									<div class="input-group">
+										<span class="input-group-addon">
+											<b>Due Date </b>
+											<!-- <label>Due Date </label> -->
+										</span>
+										<input type="date" name="" class="form-control">
+									</div>
+									<br>
+								</div>
+
+								<div class="form-group">
+									<label>Select Items </label>
+										<select id="multiselect5-filter" name="multiselect4[]" class="multiselect multiselect-custom form-control" multiple="multiple">
+											<option value="Stove">Stove</option>
+											<option value="Refrigerator">Refrigerator</option>
+											<option value="Cooker Installment">Cooker Installment</option>
+											<option value="Electric Stove Installment">Electric Stove Installment</option>
+
 										</select>
 										<br>
 								</div>
@@ -332,7 +349,7 @@
     <i class="material-icons nav__icon">receipt</i>
     <span class="nav__text">For You</span>
   </a> -->
-  <a data-toggle="modal" data-target="#CreateInvoice-modal" class="nav__link">
+  <a data-toggle="modal" data-target="#CreateInvoice-modal" class="nav__link salesRep-only">
     <i class="fa fa-edit nav__icon"></i>
     <span class="nav__text">Invoice</span>
   </a>
@@ -340,11 +357,11 @@
     <i class="lnr lnr-users nav__icon"></i>
     <span class="nav__text">Add Client</span>
   </a>
-  <a data-toggle="modal" data-target="#AddItem-modal" class="nav__link">
+  <a data-toggle="modal" data-target="#AddItem-modal" class="nav__link admin-only">
     <i class="fa fa-plus-square nav__icon"></i>
     <span class="nav__text">Add Item</span>
   </a>
-  <a data-toggle="modal" data-target="#AddSalesRep-modal" class="nav__link">
+  <a data-toggle="modal" data-target="#AddSalesRep-modal" class="nav__link admin-only">
     <i class="fa fa-user-plus nav__icon"></i>
     <span class="nav__text">Add Rep</span>
   </a>
@@ -499,7 +516,7 @@
 			    <!-- <strong>Message Context</strong> -->
 
 			    <div class="row">
-						<div class="col-md-6 col-sm-6">
+						<div class="col-md-6 col-sm-6 admin-only">
 			        <a href="#collapseCardScience" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardScience">
 			        <div class="number-chart">
 			          <!-- <div class="mini-stat">
@@ -557,7 +574,7 @@
 			        </div>
 			        </div>
 			      </div>
-			      <div class="col-md-6 col-sm-6">
+			      <div class="col-md-6 col-sm-6 admin-only">
 			        <a href="#collapseCardSocial" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardSocial">
 			        <div class="number-chart">
 			          <!-- <div class="mini-stat">
@@ -591,31 +608,31 @@
 														<tbody>
 															<tr>
 																<td><a href="#">0004</a></td>
-																<td>Shoes</td>
+																<td>Stove</td>
 																<td>$122</td>
 																<!-- <td>Oct 21, 2016</td> -->
 																<td><span class="label label-success">AVAILABLE</span></td>
 															</tr>
 															<tr>
 																<td><a href="#">0003</a></td>
-																<td>Shirts</td>
+																<td>Refrigerator</td>
 																<td>$62</td>
 																<!-- <td>Oct 21, 2016</td> -->
-																<td><span class="label label-warning">AVAILABLE</span></td>
+																<td><span class="label label-success">AVAILABLE</span></td>
 															</tr>
 															<tr>
 																<td><a href="#">0002</a></td>
-																<td>Sneakers</td>
+																<td>Cooker Installment</td>
 																<td>$34</td>
 																<!-- <td>Oct 18, 2016</td> -->
-																<td><span class="label label-danger">AVAILABLE</span></td>
+																<td><span class="label label-succes">AVAILABLE</span></td>
 															</tr>
 															<tr>
 																<td><a href="#">0001</a></td>
-																<td>Crocks</td>
+																<td>Electric Stove Installment</td>
 																<td>$186</td>
 																<!-- <td>Oct 17, 2016</td> -->
-																<td><span class="label label-success">OUT OF STOCK</span></td>
+																<td><span class="label label-danger">OUT OF STOCK</span></td>
 															</tr>
 														</tbody>
 													</table>
@@ -630,7 +647,7 @@
 			        </div>
 			      </div>
 
-			      <div class="col-md-6 col-sm-6">
+			      <div class="col-md-6 col-sm-6 salesRep-only">
 			        <a href="#collapseCardEnglish" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardEnglish">
 			        <div class="number-chart">
 			          <!-- <div class="mini-stat">
@@ -667,7 +684,7 @@
 																<td>0001</td>
 																<td>$122</td>
 																<td>Sept 17, 2020</td>
-																<td><span class="label label-success">PENDING</span></td>
+																<td><span class="label label-primary">PENDING</span></td>
 															</tr>
 															<tr>
 																<td><a href="#">0004</a></td>
@@ -695,7 +712,7 @@
 																<td>0001</td>
 																<td>$122</td>
 																<td>Sept 02, 2020</td>
-																<td><span class="label label-success">PENDING</span></td>
+																<td><span class="label label-primary">PENDING</span></td>
 															</tr>
 
 														</tbody>
