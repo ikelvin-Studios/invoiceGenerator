@@ -24,6 +24,8 @@
 	<link rel="stylesheet" href="static/assets/css/styleBottomNav.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="static/assets/css/demo.css">
+
+	<link rel="stylesheet" href="static/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
@@ -191,22 +193,123 @@
 				</div>
 			</div>
 
-			<div id="assessModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div id="CreateInvoice-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				<div class="modal-dialog modal-md" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h4 class="modal-title" id="myModalLabel">Assesment Sheet</h4>
+							<h4 class="modal-title" id="myModalLabel">Create Invoice</h4>
+						</div>
+						<div class="modal-body"><center>
+							<form class="" action="index.html" method="post">
+								<div class="form-group">
+									<label>Select Client</label>
+										<br>
+										<select id="multiselect4-filter" name="multiselect4[]" class="multiselect multiselect-custom">
+											<option value="bootstrap">Bootstrap</option>
+											<option value="bootstrap-marketplace">Bootstrap Marketplace</option>
+											<option value="bootstrap-theme">Bootstrap Theme</option>
+											<option value="html">HTML</option>
+											<option value="html-template">HTML Template</option>
+											<option value="wp-marketplace">WordPress Marketplace</option>
+											<option value="wp-plugin">WordPress Plugin</option>
+											<option value="wp-theme">WordPress Theme</option>
+										</select>
+										<br>
+								</div>
+								<div class="form-group">
+									<label>Select Items</label>
+										<br>
+										<select id="multiselect5-filter" name="multiselect4[]" class="multiselect multiselect-custom" multiple="multiple">
+											<option value="bootstrap">Bootstrap</option>
+											<option value="bootstrap-marketplace">Bootstrap Marketplace</option>
+											<option value="bootstrap-theme">Bootstrap Theme</option>
+											<option value="html">HTML</option>
+											<option value="html-template">HTML Template</option>
+											<option value="wp-marketplace">WordPress Marketplace</option>
+											<option value="wp-plugin">WordPress Plugin</option>
+											<option value="wp-theme">WordPress Theme</option>
+										</select>
+										<br>
+								</div>
+
+
+							</form>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="AddClient-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-md" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">Add Client</h4>
 						</div>
 						<div class="modal-body"><center>
 							<img id="assess-loader" src="static/assets/img/loader.gif" alt="about" class="img img-responsive mx-auto" style="height:30%;width:40%"/></center>
 
 							<div id="sheet-heading" class="section-heading">
 
-						  </div>
+							</div>
 							<div id="sheet-body" class="section-body">
 
-						  </div>
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="AddItem-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-md" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">Add Item</h4>
+						</div>
+						<div class="modal-body"><center>
+							<img id="assess-loader" src="static/assets/img/loader.gif" alt="about" class="img img-responsive mx-auto" style="height:30%;width:40%"/></center>
+
+							<div id="sheet-heading" class="section-heading">
+
+							</div>
+							<div id="sheet-body" class="section-body">
+
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="AddSalesRep-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-md" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">Add Sales Rep</h4>
+						</div>
+						<div class="modal-body"><center>
+							<img id="assess-loader" src="static/assets/img/loader.gif" alt="about" class="img img-responsive mx-auto" style="height:30%;width:40%"/></center>
+
+							<div id="sheet-heading" class="section-heading">
+
+							</div>
+							<div id="sheet-body" class="section-body">
+
+							</div>
 
 						</div>
 						<div class="modal-footer">
@@ -268,6 +371,47 @@
 	<script src="static/assets/scripts/common.js"></script>
 	<script src="includes/app.js"></script>
 	<script src="includes/main.js"></script>
+	<script src="static/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+	<script type="text/javascript">
+	// Multiselect
+		$('#multiselect1, #multiselect2, #single-selection, #multiselect5, #multiselect6').multiselect({
+			maxHeight: 300
+		});
+
+		$('#multiselect3-all').multiselect({
+			includeSelectAllOption: true,
+		});
+
+		$('#multiselect4-filter').multiselect({
+			enableFiltering: true,
+			enableCaseInsensitiveFiltering: true,
+			maxHeight: 200
+		});
+
+		$('#multiselect5-filter').multiselect({
+			enableFiltering: true,
+			enableCaseInsensitiveFiltering: true,
+			maxHeight: 200
+		});
+
+		$('#multiselect-size').multiselect({
+			buttonClass: 'btn btn-default btn-sm'
+		});
+
+		$('#multiselect-link').multiselect({
+			buttonClass: 'btn btn-link'
+		});
+
+		$('#multiselect-color').multiselect({
+			buttonClass: 'btn btn-primary'
+		});
+
+		$('#multiselect-color2').multiselect({
+			buttonClass: 'btn btn-success'
+		});
+	</script>
+
+
 	<script>
 	$(function() {
 		toastr.options.timeOut = "500";
