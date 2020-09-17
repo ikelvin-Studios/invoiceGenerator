@@ -39,7 +39,7 @@ console.log("What is mode again: "+mode);
 
  console.log("homepage is active");
  $('#main-contentArea').html(homeView);
-
+activateMode();
 });
 
 function study(subject){
