@@ -259,8 +259,12 @@ function activateMode(){
   console.log("The Mode is:"+mode);
   if (mode == "interactive") {
     $(".focus-view").hide();
+    $(".salesRep-only").hide();
+    $(".student-name").text("Admin");
   } else if (mode == "focus") {
     $(".interactive-view").hide();
+    $(".admin-only").hide();
+    $(".student-name").text("Caeser");
   }
 }
 
