@@ -1,14 +1,14 @@
 const cacheName = 'InvoiceGenerator-v0.1';
 
 const staticAssets = [
-  './',
-  './index.html',
-  './includes/app.js',
-  './includes/main.js',
-  './static/assets/img/lazyload.gif',
-  './static/assets/img/loader.gif',
-  './static/assets/img/about.gif',
-  './static/assets/img/welcome.jpg',
+  // './',
+  // './index.html',
+  // './includes/app.js',
+  // './includes/main.js',
+  // './static/assets/img/lazyload.gif',
+  // './static/assets/img/loader.gif',
+  // './static/assets/img/about.gif',
+  // './static/assets/img/welcome.jpg',
   './static/assets/vendor/bootstrap/css/bootstrap.min.css',
   './static/assets/vendor/font-awesome/css/font-awesome.min.css',
   './static/assets/vendor/linearicons/style.css',
