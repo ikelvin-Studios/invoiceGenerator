@@ -2,19 +2,36 @@
 require_once("../classes/DB.php");
 require_once("config.php");
 
-// echo(password_hash("admin4321", PASSWORD_BCRYPT));
 
 $db = new DB($host, $dbName, $username, $password);
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-        // if ($_GET['url'] == "something") {
-        //
-        //
-        // } else if ($_GET['url'] == "something else") {
-        //
-        // }
-        1;
+  if ($_GET['url'] == "clients") {
+          $postBody = file_get_contents("php://input");
+          $postBody = json_decode($postBody);
+
+          include '../modules/getClients.php';
+
+  } else if ($_GET['url'] == "items") {
+          $postBody = file_get_contents("php://input");
+          $postBody = json_decode($postBody);
+
+          include '../modules/getItems.php';
+
+  } else if ($_GET['url'] == "users") {
+          $postBody = file_get_contents("php://input");
+          $postBody = json_decode($postBody);
+
+          include '../modules/getUsers.php';
+
+  } else if ($_GET['url'] == "invoice") {
+          $postBody = file_get_contents("php://input");
+          $postBody = json_decode($postBody);
+
+          include '../modules/getInvoices.php';
+
+  }
 
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -24,11 +41,31 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
                 include '../modules/login.php';
 
-        }
-        // else if ($_GET['url'] == "something") {
-        //
-        // }
+        } else if ($_GET['url'] == "clients") {
+                $postBody = file_get_contents("php://input");
+                $postBody = json_decode($postBody);
 
+                include '../modules/addClient.php';
+
+        } else if ($_GET['url'] == "items") {
+                $postBody = file_get_contents("php://input");
+                $postBody = json_decode($postBody);
+
+                include '../modules/addItems.php';
+
+        } else if ($_GET['url'] == "users") {
+                $postBody = file_get_contents("php://input");
+                $postBody = json_decode($postBody);
+
+                include '../modules/addUser.php';
+
+        } else if ($_GET['url'] == "invoice") {
+                $postBody = file_get_contents("php://input");
+                $postBody = json_decode($postBody);
+
+                include '../modules/createInvoice.php';
+
+        }
 }  else if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
         if ($_GET['url'] == "auth") {
                 if (isset($_GET['token'])) {
