@@ -3,12 +3,17 @@
 
 <head>
 	<title>Login | InvoiceGenerator - Invoice Generator app</title>
+	<!-- <link rel="stylesheet" href="styles.css"> -->
+  <link rel="manifest" href="includes/manifest.json">
+  <meta name="theme-color" content="#ffffff" />
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="static/assets/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="static/assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="static/assets/vendor/toastr/toastr.min.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="static/assets/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -37,11 +42,11 @@
 						<form class="form-auth-small" method="post">
 							<div class="form-group">
 								<label for="signin-email" class="control-label sr-only">Email</label>
-								<input type="email" class="form-control" id="signin-email" value="invoiceadmin@campusinsider.net" placeholder="Email">
+								<input type="email" class="form-control" id="signin-email" placeholder="Email" required>
 							</div>
 							<div class="form-group">
 								<label for="signin-password" class="control-label sr-only">Password</label>
-								<input type="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password">
+								<input type="password" class="form-control" id="signin-password"  placeholder="Password" required>
 							</div>
 							<div class="form-group clearfix">
 								<label class="fancy-checkbox element-left">
@@ -64,6 +69,19 @@
 	<script src="static/assets/vendor/jquery/jquery.min.js"></script>
 	<script src="static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="static/assets/vendor/toastr/toastr.js"></script>
+	<script>
+	$(function() {
+		// toastr.options.timeOut = "500";
+		toastr.options.closeButton = true;
+		toastr.options.positionClass = 'toast-bottom-right';
+		// toastr['info']('Hi there, You are just a step away');
+
+
+	});
+	</script>
+
+	<script src="includes/app.js"></script>
+	<script src="includes/utility.js"></script>
 	<script type="text/javascript">
         $('#login-btn').click(function() {
 
@@ -76,8 +94,11 @@
                         data: '{ "email": "'+ $("#signin-email").val() +'", "password": "'+ $("#signin-password").val() +'" }',
                         success: function(r) {
                                 console.log(r)
+																toastr['success']("Login Successful, Setting up Account");
+																setupAccount(r);
                         },
                         error: function(r) {
+													toastr['error']("Error: Login Failed, May be due to wrong Credential or no internet connection");
                                 setTimeout(function() {
                                 $('[data-bs-hover-animate]').removeClass('animated ' + $('[data-bs-hover-animate]').attr('data-bs-hover-animate'));
                                 }, 2000)
@@ -88,7 +109,8 @@
                 });
 
         });
-    </script>
+  </script>
+
 </body>
 
 </html>
