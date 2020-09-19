@@ -6,6 +6,7 @@ const staticAssets = [
   './login.html',
   './includes/app.js',
   './includes/main.js',
+  './includes/utility.js',
   './includes/invoice.js',
   './static/assets/img/lazyload.gif',
   './static/assets/img/loader.gif',
