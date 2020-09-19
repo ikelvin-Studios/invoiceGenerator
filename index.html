@@ -69,23 +69,23 @@
 								<ul class="dropdown-menu user-menu menu-icon">
 									<li class="menu-heading"><i class="fa fa-fw fa-sliders"></i> MODE SETTINGS</li>
 
-									<li class="interactive-view"><a><i class="fa fa-fw fa-bell"></i> <span class="text-primary">ADMIN MODE</span> is active</a></li>
-									<li class="interactive-view"><a><i class="fa fa-fw fa-lock"></i> <span>Control Everything with Admin Access</span></a></li>
-									<li class="interactive-view"><a><i class="fa fa-fw fa-sliders"></i> <span class="text-warning">Switch To:</span></a></li>
+									<li class="interactive-view admin-only"><a><i class="fa fa-fw fa-bell"></i> <span class="text-primary">ADMIN MODE</span> is active</a></li>
+									<li class="interactive-view admin-only"><a><i class="fa fa-fw fa-lock"></i> <span>Control Everything with Admin Access</span></a></li>
+									<!-- <li class="interactive-view"><a><i class="fa fa-fw fa-sliders"></i> <span class="text-warning">Switch To:</span></a></li>
 									<li class="menu-button interactive-view">
 										<button onclick="changeMode('focus')" class="btn btn-success" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Make Studying more effective by allowing you to focus until you view Assessment." data-original-title="" title=""><i class="fa fa-edit"></i> SALES REP MODE</button>
-									</li>
+									</li> -->
 
-									<li class="focus-view"><a><i class="fa fa-fw fa-edit"></i> <span class="text-success">SALES REP MODE</span> is active</a></li>
-									<li class="focus-view"><a><i class="fa fa-fw fa-lock"></i> <span>Add Invoices and do stuffs</span></a></li>
-									<li class="focus-view"><a><i class="fa fa-fw fa-sliders"></i> <span class="text-warning">Switch To:</span></a></li>
+									<li class="focus-view salesRep-only"><a><i class="fa fa-fw fa-edit"></i> <span class="text-success">SALES REP MODE</span> is active</a></li>
+									<li class="focus-view salesRep-only"><a><i class="fa fa-fw fa-lock"></i>  <span>Add Invoices and do stuffs</span></a></li>
+									<!-- <li class="focus-view"><a><i class="fa fa-fw fa-sliders"></i> <span class="text-warning">Switch To:</span></a></li>
 
 									<li class="menu-button focus-view">
 										<button onclick="changeMode('interactive')" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Make Studying fun by providing alert when answer a question right or wrong." data-original-title="" title=""><i class="fa fa-bell"></i> ADMIN MODE</button>
-									</li>
+									</li> -->
 
 									<li class="menu-heading">ACCOUNT SETTINGS</li>
-									<li><a href="#"><i class="fa fa-fw fa-user"></i> <span class="student-name">Student</span></a></li>
+									<li><a href="#"><i class="fa fa-fw fa-user"></i> <span class="account-name">Student</span></a></li>
 									<li class="menu-button">
 										<button onclick="resetAccount()" class="btn btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="ALERT!!! By reseting your account, all Assessment Record will be reset as well. " data-original-title="" title=""><i class="fa fa-refresh"></i> Logout</button>
 									</li>
@@ -108,7 +108,7 @@
 			<div class="sidebar-scroll">
 				<div class="user-account">
 					<div class="dropdown">
-						<a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong><span class="student-name">Caeser</span></strong> <i class="fa fa-caret-down"></i></a>
+						<a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong><span class="account-name">User</span></strong> <i class="fa fa-caret-down"></i></a>
 						<ul class="dropdown-menu dropdown-menu-right account">
 							<li><a onclick="resetRecords()">Clear Records</a></li>
 							<li class="divider"></li>
@@ -256,7 +256,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Generate</button>
+							<button id="GenerateInvoice-btn" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Generate</button>
 						</div>
 					</div>
 				</div>
@@ -278,7 +278,7 @@
 											<b>Company </b>
 												<!-- <label>Invoice No.# </label> -->
 										</span>
-										<input type="text" name="" value="" class="form-control" placeholder="Company Name">
+										<input type="text" name="" value="" class="form-control" placeholder="Company Name" id="companyName-input">
 									</div>
 									<br>
 									<div class="input-group">
@@ -286,7 +286,7 @@
 											<b>Bill To </b>
 											<!-- <label>Invoice Date </label> -->
 										</span>
-										<input type="text" name="" class="form-control" placeholder="Contact Name">
+										<input type="text" name="" class="form-control" placeholder="Contact Name" id="contactName-input">
 									</div>
 									<br>
 									<div class="input-group">
@@ -294,7 +294,7 @@
 											<b>Contact Info</b>
 											<!-- <label>Due Date </label> -->
 										</span>
-										<input type="text" name="" class="form-control" placeholder="Email / Phone">
+										<input type="text" name="" class="form-control" placeholder="Email / Phone" id="clientContact-input">
 									</div>
 									<br>
 								</div>
@@ -307,7 +307,7 @@
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Add</button>
+							<button id="AddClient-btn" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Add</button>
 						</div>
 					</div>
 				</div>
@@ -329,7 +329,7 @@
 											<b>Item </b>
 												<!-- <label>Invoice No.# </label> -->
 										</span>
-										<input type="text" name="" value="" class="form-control" placeholder="Item Name">
+										<input type="text" name="" value="" class="form-control" placeholder="Item Name" id="itemName-input">
 									</div>
 									<br>
 									<div class="input-group">
@@ -337,7 +337,7 @@
 											<b>Price </b>
 											<!-- <label>Invoice Date </label> -->
 										</span>
-										<input type="number" name="" class="form-control" placeholder="Price">
+										<input type="number" name="" class="form-control" placeholder="Price" id="itemPrice-input">
 									</div>
 									<br>
 									<!-- <div class="input-group">
@@ -355,7 +355,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Add </button>
+							<button id="AddItem-btn" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Add </button>
 						</div>
 					</div>
 				</div>
@@ -379,7 +379,7 @@
 											<b>Name </b>
 											<!-- <label>Invoice Date </label> -->
 										</span>
-										<input type="text" name="" class="form-control" placeholder="Enter Name">
+										<input type="text" name="" class="form-control" placeholder="Enter Name" id="salesRepName-input">
 									</div>
 									<br>
 									<div class="input-group">
@@ -387,7 +387,7 @@
 											<b>Email</b>
 											<!-- <label>Due Date </label> -->
 										</span>
-										<input type="email" name="" class="form-control" placeholder="Email">
+										<input type="email" name="" class="form-control" placeholder="Email" id="salesRepEmail-input">
 									</div>
 									<br>
 									<!-- <div class="input-group">
@@ -406,7 +406,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Close</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Add</button>
+							<button id="AddSalesRep-btn" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check-circle"></i> Add</button>
 						</div>
 					</div>
 				</div>
@@ -463,6 +463,7 @@
 	<script src="static/assets/vendor/toastr/toastr.js"></script>
 	<script src="static/assets/scripts/common.js"></script>
 	<script src="includes/app.js"></script>
+	<script src="includes/utility.js"></script>
 	<script src="includes/main.js"></script>
 	<script src="static/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
 	<script type="text/javascript">
@@ -598,7 +599,7 @@
 			          <!-- <div class="mini-stat">
 			            <div id="" class="">Subject</div>
 			          </div> -->
-			          <div class="number"><span>Sales Reps</span><span>2</span></div>
+			          <div class="number"><span>Sales Reps</span><span class="salesRep-count">0</span></div>
 			          <p class="text-muted"><i class="fa fa-info-circle"></i> Add & Manage</p>
 			          <!-- Collapsable Card Example -->
 			        <div class="card shadow mb-4">
@@ -623,20 +624,9 @@
 																<th>Status</th>
 															</tr>
 														</thead>
-														<tbody>
+														<tbody id="salesRep-list">
 															<tr>
-																<td>1. <a href="#">Caeser</a></td>
-																<!-- <td>Caeser</td> -->
-																<td>caeser@campusinsider.net</td>
-																<!-- <td>Oct 21, 2016</td> -->
-																<td><span class="label label-success">ACTIVE</span></td>
-															</tr>
-															<tr>
-																<td>2. <a href="#">Efya</a></td>
-																<!-- <td>Efya</td> -->
-																<td>efya@campusinsider.net</td>
-																<!-- <td>Oct 21, 2016</td> -->
-																<td><span class="label label-warning">DISABLED</span></td>
+																<td colspan="3"><a href="#">There are no users in record</a></td>
 															</tr>
 
 														</tbody>
@@ -656,7 +646,7 @@
 			          <!-- <div class="mini-stat">
 			            <div id="" class="">Subject</div>
 			          </div> -->
-			          <div class="number"><span>Items</span><span>4</span></div>
+			          <div class="number"><span>Items</span><span class="items-count">0</span></div>
 			          <p class="text-muted"><i class="fa fa-info-circle"></i> Add & Manage</p>
 			          <!-- Collapsable Card Example -->
 			        <div class="card shadow mb-4">
@@ -681,34 +671,9 @@
 																<th>Status</th>
 															</tr>
 														</thead>
-														<tbody>
+														<tbody id="items-list">
 															<tr>
-																<td><a href="#">0004</a></td>
-																<td>Stove</td>
-																<td>$122</td>
-																<!-- <td>Oct 21, 2016</td> -->
-																<td><span class="label label-success">AVAILABLE</span></td>
-															</tr>
-															<tr>
-																<td><a href="#">0003</a></td>
-																<td>Refrigerator</td>
-																<td>$62</td>
-																<!-- <td>Oct 21, 2016</td> -->
-																<td><span class="label label-success">AVAILABLE</span></td>
-															</tr>
-															<tr>
-																<td><a href="#">0002</a></td>
-																<td>Cooker Installment</td>
-																<td>$34</td>
-																<!-- <td>Oct 18, 2016</td> -->
-																<td><span class="label label-succes">AVAILABLE</span></td>
-															</tr>
-															<tr>
-																<td><a href="#">0001</a></td>
-																<td>Electric Stove Installment</td>
-																<td>$186</td>
-																<!-- <td>Oct 17, 2016</td> -->
-																<td><span class="label label-danger">OUT OF STOCK</span></td>
+																<td colspan="4"><a href="#">There are no items in record</a></td>
 															</tr>
 														</tbody>
 													</table>
@@ -729,7 +694,7 @@
 			          <!-- <div class="mini-stat">
 			            <div id="" class="">Subject</div>
 			          </div> -->
-			          <div class="number"><span>Invoices</span><span>5</span></div>
+			          <div class="number"><span>Invoices</span><span class="invoice-count">0</span></div>
 			          <p class="text-muted"><i class="fa fa-info-circle"></i> Add & Manage</p>
 			          <!-- Collapsable Card Example -->
 			        <div class="card shadow mb-4">
@@ -754,43 +719,10 @@
 																<th>Status</th>
 															</tr>
 														</thead>
-														<tbody>
+														<tbody id="invoice-list">
 															<tr>
-																<td><a href="#">0005</a></td>
-																<td>0001</td>
-																<td>$122</td>
-																<td>Sept 17, 2020</td>
-																<td><span class="label label-primary">PENDING</span></td>
+																<td colspan="4"><a href="#">There are no invoices in record</a></td>
 															</tr>
-															<tr>
-																<td><a href="#">0004</a></td>
-																<td>0002</td>
-																<td>$122</td>
-																<td>Sept 12, 2020</td>
-																<td><span class="label label-success">COMPLETED</span></td>
-															</tr>
-															<tr>
-																<td><a href="#">0003</a></td>
-																<td>0002</td>
-																<td>$122</td>
-																<td>Sept 11, 2020</td>
-																<td><span class="label label-success">DUE</span></td>
-															</tr>
-															<tr>
-																<td><a href="#">0002</a></td>
-																<td>0001</td>
-																<td>$122</td>
-																<td>Sept 07, 2020</td>
-																<td><span class="label label-success">COMPLETED</span></td>
-															</tr>
-															<tr>
-																<td><a href="#">0001</a></td>
-																<td>0001</td>
-																<td>$122</td>
-																<td>Sept 02, 2020</td>
-																<td><span class="label label-primary">PENDING</span></td>
-															</tr>
-
 														</tbody>
 													</table>
 												</div>
@@ -808,8 +740,8 @@
 			          <!-- <div class="mini-stat">
 			            <div id="" class="">Subject</div>
 			          </div> -->
-			          <div class="number"><span>Clients</span><span>2</span></div>
-			          <p class="text-muted"><i class="fa fa-info-circle text-success"></i> Add & Manage</p>
+			          <div class="number"><span>Clients</span><span class="clients-count">0</span></div>
+			          <p class="text-muted"><i class="fa fa-info-circle"></i> Add & Manage</p>
 			          <!-- Collapsable Card Example -->
 			          <div class="card shadow mb-4">
 			            <!-- Card Header - Accordion -->
@@ -833,20 +765,9 @@
 																	<th>Status</th>
 																</tr>
 															</thead>
-															<tbody>
+															<tbody id="clients-list">
 																<tr>
-																	<td><a href="#">0001</a></td>
-																	<td>Steven</td>
-																	<td>Jumia GH</td>
-																	<td>steven@jumia.com.gh</td>
-																	<td><span class="label label-success">ACTIVE</span></td>
-																</tr>
-																<tr>
-																	<td><a href="#">0002</a></td>
-																	<td>Adjoa</td>
-																	<td>TugFoods</td>
-																	<td>0552432564</td>
-																	<td><span class="label label-warning">INACTIVE</span></td>
+																	<td colspan="4"><a href="#">There are no clients in record</a></td>
 																</tr>
 															</tbody>
 														</table>
@@ -867,7 +788,7 @@
 			<!-- End of Select Questions -->
 		</div>
 
-		<div id="quizView" class="">
+		<div id="invoiceView" class="">
 			<!--  Questions & Answers-->
 			<div class="container-fluid">
 			  <div class="section-heading">
