@@ -25,6 +25,7 @@ console.log("What is mode again: "+mode);
 
  console.log("homepage is active");
  $('#main-contentArea').html(homeView);
+ // $('#main-contentArea').append(invoiceView);
 activateMode();
 generateLists();
 });
@@ -40,6 +41,7 @@ function generateLists(){
   }
   porpulateInvoices();
   porpulateClients();
+  porpulateInvoiceSelections();
 }
 
 function porpulateSalesReps(){
@@ -157,7 +159,7 @@ function porpulateInvoices(){
                                     label = '<span class="label label-warning">DUE</span>';
                                   }
 
-                                  listItem = '<tr><td><a href="#">'+list[index].id+'</a></td>tr><td><a href="#">'+list[index].client_id+'</a></td><td>'+list[index].invoice+'</td><td>'+list[index].invoice_date+'[Due: '+list[index].due_date+']</td><td>'+label+'</td></tr>'
+                                  listItem = '<tr><td><a href="#">#INV'+list[index].Invoice+'</a></td><td><a href="#">'+list[index].client_id+'</a></td><td>'+list[index].invoice_date+' [Due: '+list[index].due_date+']</td><td>'+label+'</td></tr>'
 
                                         $('#invoice-list').html(
                                                 $('#invoice-list').html() + listItem
@@ -193,6 +195,10 @@ function porpulateClients(){
                                   count++;
                                   console.log("Got Reps");
                                   console.log(list[index]);
+
+                                  if (list[index].company == "") {
+                                    list[index].company = "NA";
+                                  }
                                   label = '';
                                   if (list[index].status == "ACTIVE") {
                                     label = '<span class="label label-success">ACTIVE</span>';
@@ -200,7 +206,7 @@ function porpulateClients(){
                                     label = '<span class="label label-warning">INACTIVE</span>';
                                   }
 
-                                  listItem = '<tr><td><a href="#">'+list[index].id+'</a></td><tr><td>'+list[index].name+'</td><tr><td>'+count+''+list[index].company+'</td><td>'+list[index].contact+'</td><td>'+label+'</td></tr>'
+                                  listItem = '<tr><td><a href="#">'+list[index].id+'</a></td><td>'+list[index].name+'</td><td>'+list[index].company+'</td><td>'+list[index].contact+'</td><td>'+label+'</td></tr>'
 
                                         $('#clients-list').html(
                                                 $('#clients-list').html() + listItem
@@ -215,6 +221,125 @@ function porpulateClients(){
 
                 });
 }
+
+function porpulateInvoiceSelections(){
+  $.ajax({
+
+    type: "GET",
+    url: "backend/api/clients",
+    processData: false,
+    contentType: "application/json",
+    data: '',
+    success: function(r) {
+            let list = JSON.parse(r)
+            count = 0;
+            output = '<label>Select Client </label> <select id="selectClient-filter" name="multiselect4[]" class="multiselect multiselect-custom form-control"> ';
+            $.each(list, function(index) {
+              count++;
+              console.log("Got Reps");
+              console.log(list[index]);
+              labelCompany = '';
+              if (list[index].company != "") {
+                labelCompany = '[From: '+list[index].company+']';
+              }
+
+
+
+              output += '<option value="'+list[index].name+ ' '+labelCompany+'">'+list[index].name+ ' '+labelCompany+'</option>';
+                    // $("#selectClient-filter").append('<option value="'+list[index].name+labelCompany+'">'+list[index].name+labelCompany+'</option>');
+                    console.log("Should append Client Now Now");
+                    // $("#selectClient-filter").html(
+                    //         $("#selectClient-filter").html() + listItem
+                    // )
+
+            })
+
+            output += '</select> <br>';
+              $("#selectClientField").html(output);
+
+    },
+    error: function(r) {
+            console.log(r)
+    }
+
+  });
+
+  $.ajax({
+
+    type: "GET",
+    url: "backend/api/items",
+    processData: false,
+    contentType: "application/json",
+    data: '',
+    success: function(r) {
+            let list = JSON.parse(r)
+
+            count = 0;
+            output = '<label>Select Items </label> <select id="selectItems-filter" name="selectItems[]" class="multiselect multiselect-custom form-control" multiple="multiple"> ';
+            $.each(list, function(index) {
+              // count++;
+              // console.log("Got items");
+              // console.log(list[index]);
+              // label = '';
+              // if (list[index].status == "AVAILABLE") {
+              //   label = '<span class="label label-success">AVAILABLE</span>';
+              // } else if (list[index].status == "OUT OF STOCK") {
+              //   label = '<span class="label label-warning">OUT OF STOCK</span>';
+              // }
+
+              output += '<option value=\''+JSON.stringify(list[index])+'\'">'+list[index].item+' [Price: '+list[index].price+']</option>';
+              // $("#selectItems-filter").append('<option value="'+list[index]+'">'+list[index].item+'</option>');
+                console.log("Should append item Now Now");
+                    // $("#selectItems-filter").html(
+                    //         $("#selectItems-filter").html() + listItem
+                    // )
+
+            })
+            output += '</select> <br>';
+              $("#selectItemsField").html(output);
+              $('#multiselect1, #multiselect2, #single-selection, #multiselect5, #multiselect6').multiselect({
+                maxHeight: 300
+              });
+
+              $('#multiselect3-all').multiselect({
+                includeSelectAllOption: true,
+              });
+
+              $('#selectClient-filter').multiselect({
+                enableFiltering: true,
+                enableCaseInsensitiveFiltering: true,
+                maxHeight: 200
+              });
+
+              $('#selectItems-filter').multiselect({
+                enableFiltering: true,
+                enableCaseInsensitiveFiltering: true,
+                maxHeight: 200
+              });
+
+              $('#multiselect-size').multiselect({
+                buttonClass: 'btn btn-default btn-sm'
+              });
+
+              $('#multiselect-link').multiselect({
+                buttonClass: 'btn btn-link'
+              });
+
+              $('#multiselect-color').multiselect({
+                buttonClass: 'btn btn-primary'
+              });
+
+              $('#multiselect-color2').multiselect({
+                buttonClass: 'btn btn-success'
+              });
+    },
+    error: function(r) {
+            console.log(r)
+    }
+
+  });
+}
+
 $('#AddSalesRep-btn').click(function() {
 
         $.ajax({
@@ -278,7 +403,7 @@ $('#AddClient-btn').click(function() {
                 url: "backend/api/clients",
                 processData: false,
                 contentType: "application/json",
-                data: '{ "company": "'+ $("#companyName-input").val() +'", "name": "'+ $("#clientName-input").val() +'", "contact": "'+ $("#clientContact-input").val() +'" }',
+                data: '{ "company": "'+ $("#companyName-input").val() +'", "name": "'+ $("#contactName-input").val() +'", "contact": "'+ $("#clientContact-input").val() +'" }',
                 success: function(r) {
                         console.log(r)
                         toastr['success']("Added Successfully");
@@ -295,33 +420,6 @@ $('#AddClient-btn').click(function() {
                 }
 
         });
-
-});
-$('#GenerateInvoice-btn').click(function() {
-
-        // $.ajax({
-        //
-        //         type: "POST",
-        //         url: "backend/api/users",
-        //         processData: false,
-        //         contentType: "application/json",
-        //         data: '{ "name": "'+ $("#salesRepName-input").val() +'", "email": "'+ $("#salesRepEmail-input").val() +'" }',
-        //         success: function(r) {
-        //                 console.log(r)
-        //                 toastr['success']("Added Successfully");
-        //                 window.location.reload();
-        //                 // setupAccount(r);
-        //         },
-        //         error: function(r) {
-        //           toastr['error']("Error: Failed To Add, May be due to no internet connection");
-        //                 // setTimeout(function() {
-        //                 // $('[data-bs-hover-animate]').removeClass('animated ' + $('[data-bs-hover-animate]').attr('data-bs-hover-animate'));
-        //                 // }, 2000)
-        //                 // $('[data-bs-hover-animate]').addClass('animated ' + $('[data-bs-hover-animate]').attr('data-bs-hover-animate'))
-        //                 console.log(r)
-        //         }
-        //
-        // });
 
 });
 //
