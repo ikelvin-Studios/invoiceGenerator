@@ -1,4 +1,4 @@
-const cacheName = 'InvoiceGenerator-v1.0';
+const cacheName = 'InvoiceGenerator-v1.1';
 
 const staticAssets = [
   './',
@@ -52,7 +52,7 @@ async function cacheFirst(request) {
 }
 
 async function networkFirst(request) {
-  const dynamicCache = await caches.open('InvoiceGenerator-v1.0');
+  const dynamicCache = await caches.open('InvoiceGenerator-v1.1');
   try {
     const networkResponse = await fetch(request);
     dynamicCache.put(request, networkResponse.clone());
